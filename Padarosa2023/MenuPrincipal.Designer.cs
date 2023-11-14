@@ -33,7 +33,7 @@
             this.btnComandas = new System.Windows.Forms.Button();
             this.btnProdutos = new System.Windows.Forms.Button();
             this.btnCaixa = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnUsuarios = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -93,16 +93,17 @@
             this.btnCaixa.Text = "Caixa";
             this.btnCaixa.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnUsuarios
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Malgun Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(354, 363);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(534, 49);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Gerenciamento de Usuários";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnUsuarios.Font = new System.Drawing.Font("Malgun Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsuarios.Location = new System.Drawing.Point(354, 363);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new System.Drawing.Size(534, 49);
+            this.btnUsuarios.TabIndex = 5;
+            this.btnUsuarios.Text = "Gerenciamento de Usuários";
+            this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // pictureBox2
             // 
@@ -113,6 +114,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
@@ -132,7 +134,7 @@
             this.ClientSize = new System.Drawing.Size(917, 439);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnUsuarios);
             this.Controls.Add(this.btnCaixa);
             this.Controls.Add(this.btnProdutos);
             this.Controls.Add(this.btnComandas);
@@ -157,7 +159,7 @@
         private System.Windows.Forms.Button btnComandas;
         private System.Windows.Forms.Button btnProdutos;
         private System.Windows.Forms.Button btnCaixa;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
     }
