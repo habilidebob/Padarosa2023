@@ -77,7 +77,56 @@ namespace Padarosa2023.Views
         {
             Classes.Usuario usuario = new Classes.Usuario();
             usuario.Id = idSelecionado;
-            // Apagar:
+            // Confirmar a exclusão:
+            var r = MessageBox.Show("Tem certeza que deseja remover?", "Atenção!",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (r == DialogResult.Yes)
+            {
+                // Apagar:
+                if(usuario.Apagar() == true)
+                {
+                    MessageBox.Show("Usuário removido!", "Sucesso!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Atualizar o dgv:
+                    dgvUsuarios.DataSource = usuario.ListarTudo();
+                    // Limpar os campos de edição:
+                    txbEmailEdi.Clear();
+                    txbNomeEdi.Clear();
+                    txbSenhaEdi.Clear();
+                    lblApagar.Text = "Selecione um usuário para apagar.";
+                    // Desabilitar os grbs:
+                    grbApagar.Enabled = false;
+                    grbEditar.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("Falha ao remover usuário!", "Falha!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Classes.Usuario usuario = new Classes.Usuario();
+
+            // Obter os valores dos txbs:
+            usuario.Id = idSelecionado;
+            usuario.NomeCompleto = txbNomeEdi.Text;
+            usuario.Email = txbEmailEdi.Text;
+            usuario.Senha = txbSenhaEdi.Text;
+
+            // Editar:
+            if(usuario.Modificar() == true)
+            {
+                MessageBox.Show("Usuário modificado!", "Sucesso!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Falha ao modificar usuário!", "Falha!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }
