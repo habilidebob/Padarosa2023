@@ -14,6 +14,7 @@ namespace Padarosa2023
     {
         // Objetos globais:
         Classes.Usuario usuario = new Classes.Usuario();
+
         public MenuPrincipal(Classes.Usuario usuario)
         {
             InitializeComponent();
@@ -36,6 +37,12 @@ namespace Padarosa2023
         {
             // Instanciar a janela:
             Views.GerenciamentoUsuarios janela = new Views.GerenciamentoUsuarios();
+            janela.Show();
+        }
+
+        private void btnProdutos_Click(object sender, EventArgs e)
+        {
+            Views.GerenciamentoProdutos janela = new Views.GerenciamentoProdutos(usuario);
             janela.Show();
         }
     }

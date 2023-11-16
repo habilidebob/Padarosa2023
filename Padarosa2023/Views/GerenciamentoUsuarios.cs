@@ -121,6 +121,16 @@ namespace Padarosa2023.Views
             {
                 MessageBox.Show("Usuário modificado!", "Sucesso!", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+                // Atualizar o dgv:
+                dgvUsuarios.DataSource = usuario.ListarTudo();
+                // Limpar os campos de edição:
+                txbEmailEdi.Clear();
+                txbNomeEdi.Clear();
+                txbSenhaEdi.Clear();
+                lblApagar.Text = "Selecione um usuário para apagar.";
+                // Desabilitar os grbs:
+                grbApagar.Enabled = false;
+                grbEditar.Enabled = false;
             }
             else
             {
