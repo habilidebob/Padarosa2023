@@ -19,13 +19,17 @@ namespace Padarosa2023
         {
             InitializeComponent();
 
-
             // Atribuir o usuário local no global:
             this.usuario = usuario;
 
-
             // Mudar a label de apresentação:
             lblSaudacao.Text = "Olá, " + usuario.NomeCompleto;
+
+            // Esconder o gerenciamento de usuários dos ids != 1
+            if(usuario.Id != 1)
+            {
+                btnUsuarios.Visible = false;
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

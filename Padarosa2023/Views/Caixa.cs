@@ -27,9 +27,23 @@ namespace Padarosa2023.Views
                 Classes.OrdemComanda ordem = new Classes.OrdemComanda();
                 ordem.IdFicha = int.Parse(txbComanda.Text);
                 var r = ordem.BuscarFicha();
-                dgvFicha.DataSource = r;
-                // Atualizar o valor total:
-                lblTotal.Text = "R$ " + r.Compute("SUM(Total_Item)", "True").ToString();
+                // Verificar se existem itens na comanda:
+                if(r.Rows.Count > 0)
+                {
+                    dgvFicha.DataSource = r;
+                    // Atualizar o valor total:
+                    lblTotal.Text = "R$ " + r.Compute("SUM(Total_Item)", "True").ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Não existem lançamentos nessa comanda!", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Limpar o dgv
+                    dgvFicha.DataSource = null;
+                    lblTotal.Text = "R$ 0,00";
+                    txbComanda.Clear();
+                }
+                
             }
             else
             {

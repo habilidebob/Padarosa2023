@@ -35,6 +35,11 @@ namespace Padarosa2023
                 
                 // Próximo passo: abrir a janela menu:
                 MenuPrincipal janela = new MenuPrincipal(usuario);
+
+                // Limpar os campos de login:
+                txbEmail.Clear();
+                txbSenha.Clear();
+                
                 // Esconder a janela atual:
                 this.Hide();
                 // Mostrar o menu:
