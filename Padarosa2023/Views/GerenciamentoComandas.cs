@@ -30,8 +30,19 @@ namespace Padarosa2023.Views
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            grbLancamento.Enabled = true;
-            grbInfos.Enabled = false;
+            // Verificar se o numero da comanda e cod do produto não
+            // estão vazios:
+            if(txbComanda.Text != "" && txbCodProduto.Text != "")
+            {
+                grbLancamento.Enabled = true;
+                grbInfos.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Verifique as informações digitadas!",
+                    "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void dgvProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -45,30 +56,59 @@ namespace Padarosa2023.Views
             
         }
 
+        private void LimparTudo()
+        {
+            // Limpar os campos:
+            txbCodProduto.Clear();
+            txbComanda.Clear();
+            txbProduto.Clear();
+            txbQuantidade.Clear();
+
+            // Resetar os grbs:
+            grbInfos.Enabled = true;
+            grbLancamento.Enabled = false;
+        }
+
         private void btnLancar_Click(object sender, EventArgs e)
         {
-            var r = MessageBox.Show("Tem certeza que deseja lançar?", "Aviso!",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (r == DialogResult.Yes)
+            if(txbQuantidade.Text != "")
             {
-                Classes.OrdemComanda ordem = new Classes.OrdemComanda();
-                // Obter os valores dos campos:
-                ordem.IdFicha = int.Parse(txbComanda.Text);
-                ordem.IdProduto = int.Parse(txbCodProduto.Text);
-                ordem.Quantidade = int.Parse(txbQuantidade.Text);
-                ordem.IdResponsavel = usuario.Id;
-                // Efetuar o cadastro:
-                if(ordem.NovoLancamento() == true)
+                var r = MessageBox.Show("Tem certeza que deseja lançar?", "Aviso!",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (r == DialogResult.Yes)
                 {
-                    MessageBox.Show("Lançamento efetuado!","Sucesso",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Falha no lançamento!", "Erro",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Classes.OrdemComanda ordem = new Classes.OrdemComanda();
+                    // Obter os valores dos campos:
+                    ordem.IdFicha = int.Parse(txbComanda.Text);
+                    ordem.IdProduto = int.Parse(txbCodProduto.Text);
+                    ordem.Quantidade = int.Parse(txbQuantidade.Text);
+                    ordem.IdResponsavel = usuario.Id;
+                    // Efetuar o cadastro:
+                    if (ordem.NovoLancamento() == true)
+                    {
+                        MessageBox.Show("Lançamento efetuado!", "Sucesso",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimparTudo();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falha no lançamento!", "Erro",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        LimparTudo();
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("Informe a quantidade!","Erro!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error );
+            }
+            
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimparTudo();
         }
     }
 }

@@ -32,17 +32,18 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
             this.grbInfos = new System.Windows.Forms.GroupBox();
-            this.lblComanda = new System.Windows.Forms.Label();
-            this.txbComanda = new System.Windows.Forms.TextBox();
+            this.btnContinuar = new System.Windows.Forms.Button();
             this.txbCodProduto = new System.Windows.Forms.TextBox();
             this.lblCodProduto = new System.Windows.Forms.Label();
-            this.btnContinuar = new System.Windows.Forms.Button();
+            this.txbComanda = new System.Windows.Forms.TextBox();
+            this.lblComanda = new System.Windows.Forms.Label();
             this.grbLancamento = new System.Windows.Forms.GroupBox();
             this.btnLancar = new System.Windows.Forms.Button();
             this.txbQuantidade = new System.Windows.Forms.TextBox();
             this.lblQuantidade = new System.Windows.Forms.Label();
             this.txbProduto = new System.Windows.Forms.TextBox();
             this.lblProduto = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pibIcone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.grbInfos.SuspendLayout();
@@ -52,10 +53,10 @@
             // pibIcone
             // 
             this.pibIcone.Image = global::Padarosa2023.Properties.Resources.order;
-            this.pibIcone.Location = new System.Drawing.Point(69, 486);
-            this.pibIcone.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.pibIcone.Location = new System.Drawing.Point(69, 508);
+            this.pibIcone.Margin = new System.Windows.Forms.Padding(7);
             this.pibIcone.Name = "pibIcone";
-            this.pibIcone.Size = new System.Drawing.Size(186, 127);
+            this.pibIcone.Size = new System.Drawing.Size(186, 105);
             this.pibIcone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pibIcone.TabIndex = 0;
             this.pibIcone.TabStop = false;
@@ -93,21 +94,17 @@
             this.grbInfos.TabStop = false;
             this.grbInfos.Text = "Informações";
             // 
-            // lblComanda
+            // btnContinuar
             // 
-            this.lblComanda.AutoSize = true;
-            this.lblComanda.Location = new System.Drawing.Point(19, 43);
-            this.lblComanda.Name = "lblComanda";
-            this.lblComanda.Size = new System.Drawing.Size(119, 29);
-            this.lblComanda.TabIndex = 0;
-            this.lblComanda.Text = "Comanda:";
-            // 
-            // txbComanda
-            // 
-            this.txbComanda.Location = new System.Drawing.Point(176, 43);
-            this.txbComanda.Name = "txbComanda";
-            this.txbComanda.Size = new System.Drawing.Size(130, 33);
-            this.txbComanda.TabIndex = 1;
+            this.btnContinuar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnContinuar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnContinuar.Location = new System.Drawing.Point(24, 133);
+            this.btnContinuar.Name = "btnContinuar";
+            this.btnContinuar.Size = new System.Drawing.Size(282, 38);
+            this.btnContinuar.TabIndex = 4;
+            this.btnContinuar.Text = "Continuar";
+            this.btnContinuar.UseVisualStyleBackColor = false;
+            this.btnContinuar.Click += new System.EventHandler(this.btnContinuar_Click);
             // 
             // txbCodProduto
             // 
@@ -125,20 +122,25 @@
             this.lblCodProduto.TabIndex = 2;
             this.lblCodProduto.Text = "Cód Produto:";
             // 
-            // btnContinuar
+            // txbComanda
             // 
-            this.btnContinuar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnContinuar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnContinuar.Location = new System.Drawing.Point(24, 133);
-            this.btnContinuar.Name = "btnContinuar";
-            this.btnContinuar.Size = new System.Drawing.Size(282, 38);
-            this.btnContinuar.TabIndex = 4;
-            this.btnContinuar.Text = "Continuar";
-            this.btnContinuar.UseVisualStyleBackColor = false;
-            this.btnContinuar.Click += new System.EventHandler(this.btnContinuar_Click);
+            this.txbComanda.Location = new System.Drawing.Point(176, 43);
+            this.txbComanda.Name = "txbComanda";
+            this.txbComanda.Size = new System.Drawing.Size(130, 33);
+            this.txbComanda.TabIndex = 1;
+            // 
+            // lblComanda
+            // 
+            this.lblComanda.AutoSize = true;
+            this.lblComanda.Location = new System.Drawing.Point(19, 43);
+            this.lblComanda.Name = "lblComanda";
+            this.lblComanda.Size = new System.Drawing.Size(119, 29);
+            this.lblComanda.TabIndex = 0;
+            this.lblComanda.Text = "Comanda:";
             // 
             // grbLancamento
             // 
+            this.grbLancamento.Controls.Add(this.btnCancelar);
             this.grbLancamento.Controls.Add(this.btnLancar);
             this.grbLancamento.Controls.Add(this.txbQuantidade);
             this.grbLancamento.Controls.Add(this.lblQuantidade);
@@ -147,7 +149,7 @@
             this.grbLancamento.Enabled = false;
             this.grbLancamento.Location = new System.Drawing.Point(12, 277);
             this.grbLancamento.Name = "grbLancamento";
-            this.grbLancamento.Size = new System.Drawing.Size(330, 199);
+            this.grbLancamento.Size = new System.Drawing.Size(330, 221);
             this.grbLancamento.TabIndex = 5;
             this.grbLancamento.TabStop = false;
             this.grbLancamento.Text = "Lançamento";
@@ -185,6 +187,7 @@
             // 
             this.txbProduto.Location = new System.Drawing.Point(176, 43);
             this.txbProduto.Name = "txbProduto";
+            this.txbProduto.ReadOnly = true;
             this.txbProduto.Size = new System.Drawing.Size(130, 33);
             this.txbProduto.TabIndex = 1;
             // 
@@ -196,6 +199,19 @@
             this.lblProduto.Size = new System.Drawing.Size(103, 29);
             this.lblProduto.TabIndex = 0;
             this.lblProduto.Text = "Produto:";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelar.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(24, 177);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(282, 29);
+            this.btnCancelar.TabIndex = 5;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // GerenciamentoComandas
             // 
@@ -210,7 +226,7 @@
             this.Controls.Add(this.lblTitulo);
             this.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.Margin = new System.Windows.Forms.Padding(7);
             this.Name = "GerenciamentoComandas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gerenciamento de Comandas";
@@ -242,5 +258,6 @@
         private System.Windows.Forms.Label lblQuantidade;
         private System.Windows.Forms.TextBox txbProduto;
         private System.Windows.Forms.Label lblProduto;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }
